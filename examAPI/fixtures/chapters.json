@@ -1,0 +1,58 @@
+[
+	{
+		"model": "examAPI.Chapter",
+		"fields": {
+			"id": 1,
+			"course": 1,
+			"name": "First Chapter"
+		}
+	},
+	{
+		"model": "examAPI.Chapter",
+		"fields": {
+			"id": 2,
+			"course": 1,
+			"name": "Second Chapter"
+		}
+	},
+	{
+		"model": "examAPI.Chapter",
+		"fields": {
+			"id": 3,
+			"course": 1,
+			"name": "Third Chapter"
+		}
+	},
+	{
+		"model": "examAPI.Chapter",
+		"fields": {
+			"id": 4,
+			"course": 2,
+			"name": "First Chapter"
+		}
+	},
+	{
+		"model": "examAPI.Chapter",
+		"fields": {
+			"id": 5,
+			"course": 3,
+			"name": "First Chapter"
+		}
+	},
+	{
+		"model": "examAPI.Chapter",
+		"fields": {
+			"id": 6,
+			"course": 4,
+			"name": "First Chapter"
+		}
+	},
+	{
+		"model": "examAPI.Chapter",
+		"fields": {
+			"id": 7,
+			"course": 5,
+			"name": "First Chapter"
+		}
+	}
+]

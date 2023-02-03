@@ -1,0 +1,29 @@
+{% extends 'examAPI/layout.html' %} {% load static %} {% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-4"></div>
+		<div class="col-md-4 generate_exam_form">
+			<h1 style="text-align: center; font: size 18px">Generate Exam</h1>
+			<form id="exam-form" onsubmit="generateExam(); return false;">
+				{% csrf_token %}
+				<label class="form-label">Courses</label>
+				<select
+					id="course-options"
+					class="form-select form-select mb-2"
+					aria-label=".form-select example"
+					required
+					onchange="getChapters(this)"
+				>
+					<option value="" disabled selected>Select Course</option>
+				</select>
+				<div class="input-group mb-3" id="chapters-container"></div>
+				<button type="submit" class="btn btn-primary">
+					Submit
+				</button>
+			</form>
+		</div>
+		<div class="col-md-4"></div>
+	</div>
+</div>
+<script src="{% static 'examAPI/scripts/create_exam.js' %}"></script>
+{% endblock body %}

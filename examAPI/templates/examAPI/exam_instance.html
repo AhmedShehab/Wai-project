@@ -1,0 +1,22 @@
+{% extends 'examAPI/layout.html' %} {% block body %}
+<div class="row">
+	<div class="col-md-4"></div>
+	<div class="col-md-4">
+		<ul class="list-group">
+			{% for question in exam.questions.all %}
+			<li class="list-group-item">
+				{{forloop.counter}}- {{question.content}}
+				<br />
+				Answers
+				<ul class="list-group">
+					<li class="list-group-item text-danger">{{question.wrongAnswer1}}</li>
+					<li class="list-group-item text-danger">{{question.wrongAnswer2}}</li>
+					<li class="list-group-item text-success">{{question.rightAnswer}}</li>
+				</ul>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+	<div class="col-md-4"></div>
+	{% endblock body %}
+</div>

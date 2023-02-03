@@ -1,0 +1,441 @@
+{% extends 'examAPI/layout.html' %} {% load static %} {% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8 generate_exam_form">
+			<h1 style="text-align: center; font: size 18px">Add Chapter Questions</h1>
+			<form id="exam-form" onsubmit="submit_questions(this); return false;">
+				{% csrf_token %}
+				<label class="form-label">Courses</label>
+				<select
+					id="course-options"
+					class="form-select form-select mb-2"
+					aria-label=".form-select example"
+					required
+					onchange="getChapters(this)"
+				>
+					<option value="" disabled selected>Select Course</option>
+				</select>
+				<label class="form-label">Chapters</label>
+				<select
+					id="chapter-options"
+					class="form-select form-select mb-2"
+					aria-label=".form-select example"
+					required
+					onchange="show_questions()"
+				>
+					<option value="" disabled selected>Select Chapter</option>
+				</select>
+				<div id="questions-container" style="display: none;">
+					<div class="easy-questions" id="easy-questions">
+						<h4 style="width:100%">Easy Questions</h4>
+						<div class="question-instance" data-objective="reminding">
+							<label class="form-label" for=""
+								>Question 1 (Objective: Reminding)</label
+							>
+							<input
+								class="form-control"
+								type="text"
+								placeholder="Enter the Question"
+								name="content"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								placeholder="Wrong Answer 1"
+								name="wrongAnswer1"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								placeholder="Wrong Answer 2"
+								name="wrongAnswer2"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								placeholder="Right Answer"
+								name="rightAnswer"
+								required
+							/>
+						</div>
+						<div class="question-instance" data-objective="reminding">
+							<label class="form-label" for=""
+								>Question 2 (Objective: Reminding)</label
+							>
+							<input
+								class="form-control"
+								type="text"
+								name="content"
+								placeholder="Enter the Question"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer1"
+								placeholder="Wrong Answer 1"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer2"
+								placeholder="Wrong Answer 2"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="rightAnswer"
+								placeholder="Right Answer"
+								required
+							/>
+						</div>
+						<div class="question-instance" data-objective="understanding">
+							<label class="form-label" for=""
+								>Question 3 (Objective: Understanding)</label
+							>
+							<input
+								class="form-control"
+								type="text"
+								name="content"
+								placeholder="Enter the Question"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer1"
+								placeholder="Wrong Answer 1"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer2"
+								placeholder="Wrong Answer 2"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="rightAnswer"
+								placeholder="Right Answer"
+								required
+							/>
+						</div>
+						<div class="question-instance" data-objective="understanding">
+							<label class="form-label" for=""
+								>Question 4 (Objective: Understanding)</label
+							>
+							<input
+								class="form-control"
+								type="text"
+								name="content"
+								placeholder="Enter the Question"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer1"
+								placeholder="Wrong Answer 1"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer2"
+								placeholder="Wrong Answer 2"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="rightAnswer"
+								placeholder="Right Answer"
+								required
+							/>
+						</div>
+						<div class="question-instance"  data-objective="creativity">
+							<label class="form-label" for=""
+								>Question 5 (Objective: Creativity)</label
+							>
+							<input
+								class="form-control"
+								type="text"
+								name="content"
+								placeholder="Enter the Question"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer1"
+								placeholder="Wrong Answer 1"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer2"
+								placeholder="Wrong Answer 2"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="rightAnswer"
+								placeholder="Right Answer"
+								required
+							/>
+						</div>
+						<div class="question-instance" data-objective="creativity">
+							<label class="form-label" for=""
+								>Question 6 (Objective: Creativity)</label
+							>
+							<input
+								class="form-control"
+								type="text"
+								name="content"
+								placeholder="Enter the Question"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer1"
+								placeholder="Wrong Answer 1"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer2"
+								placeholder="Wrong Answer 2"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="rightAnswer"
+								placeholder="Right Answer"
+								required
+							/>
+						</div>
+					</div>
+					<div class="difficult-questions" id="difficult-questions">
+						<h4 style="width:100%">Difficult Questions</h4>
+						<div class="question-instance" data-objective="reminding">
+							<label class="form-label" for=""
+								>Question 1 (Objective: Reminding)</label
+							>
+							<input
+								class="form-control"
+								type="text"
+								name="content"
+								placeholder="Enter the Question"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer1"
+								placeholder="Wrong Answer 1"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer2"
+								placeholder="Wrong Answer 2"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="rightAnswer"
+								placeholder="Right Answer"
+								required
+							/>
+						</div>
+						<div class="question-instance" data-objective="reminding">
+							<label class="form-label" for=""
+								>Question 2 (Objective: Reminding)</label
+							>
+							<input
+								class="form-control"
+								type="text"
+								name="content"
+								placeholder="Enter the Question"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer1"
+								placeholder="Wrong Answer 1"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer2"
+								placeholder="Wrong Answer 2"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="rightAnswer"
+								placeholder="Right Answer"
+								required
+							/>
+						</div>
+						<div class="question-instance" data-objective="understanding">
+							<label class="form-label" for=""
+								>Question 3 (Objective: Understanding)</label
+							>
+							<input
+								class="form-control"
+								type="text"
+								name="content"
+								placeholder="Enter the Question"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer1"
+								placeholder="Wrong Answer 1"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer2"
+								placeholder="Wrong Answer 2"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="rightAnswer"
+								placeholder="Right Answer"
+								required
+							/>
+						</div>
+						<div class="question-instance" data-objective="understanding">
+							<label class="form-label" for=""
+								>Question 4 (Objective: Understanding)</label
+							>
+							<input
+								class="form-control"
+								type="text"
+								name="content"
+								placeholder="Enter the Question"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer1"
+								placeholder="Wrong Answer 1"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer2"
+								placeholder="Wrong Answer 2"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="rightAnswer"
+								placeholder="Right Answer"
+								required
+							/>
+						</div>
+						<div class="question-instance"  data-objective="creativity">
+							<label class="form-label" for=""
+								>Question 5 (Objective: Creativity)</label
+							>
+							<input
+								class="form-control"
+								type="text"
+								name="content"
+								placeholder="Enter the Question"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer1"
+								placeholder="Wrong Answer 1"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer2"
+								placeholder="Wrong Answer 2"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="rightAnswer"
+								placeholder="Right Answer"
+								required
+							/>
+						</div>
+						<div class="question-instance" data-objective="creativity">
+							<label class="form-label" for=""
+								>Question 6 (Objective: Creativity)</label
+							>
+							<input
+								class="form-control"
+								type="text"
+								name="content"
+								placeholder="Enter the Question"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer1"
+								placeholder="Wrong Answer 1"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="wrongAnswer2"
+								placeholder="Wrong Answer 2"
+								required
+							/>
+							<input
+								class="form-control"
+								type="text"
+								name="rightAnswer"
+								placeholder="Right Answer"
+								required
+							/>
+						</div>
+					</div>
+				</div>
+				<div class="input-group mb-3" id="chapters-container"></div>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>
+<script src="{% static 'examAPI/scripts/add_questions.js' %}"></script>
+{% endblock body %}

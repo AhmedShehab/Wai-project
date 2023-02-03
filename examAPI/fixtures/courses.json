@@ -1,0 +1,42 @@
+[
+	{
+		"model": "examAPI.Course",
+		"fields": {
+			"id": 1,
+			"name": "Machine Learning",
+			"teacher": 1
+		}
+	},
+	{
+		"model": "examAPI.Course",
+		"fields": {
+			"id": 2,
+			"name": "Programming 1",
+			"teacher": 1
+		}
+	},
+	{
+		"model": "examAPI.Course",
+		"fields": {
+			"id": 3,
+			"name": "Data Structures",
+			"teacher": 1
+		}
+	},
+	{
+		"model": "examAPI.Course",
+		"fields": {
+			"id": 4,
+			"name": "Algorithms",
+			"teacher": 1
+		}
+	},
+	{
+		"model": "examAPI.Course",
+		"fields": {
+			"id": 5,
+			"name": "Drawing",
+			"teacher": 1
+		}
+	}
+]

@@ -1,0 +1,9 @@
+[
+	{
+		"model": "examAPI.Teacher",
+		"fields": {
+			"id": 1,
+			"credentials": 1
+		}
+	}
+]

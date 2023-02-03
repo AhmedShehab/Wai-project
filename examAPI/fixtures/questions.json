@@ -1,0 +1,159 @@
+[
+	{
+		"model": "examAPI.Question",
+		"fields": {
+			"id": 1,
+			"chapter": 1,
+			"difficulty": "easy",
+			"objective": "understanding",
+			"content": "What is machine learning ?",
+			"wrongAnswer1": "This is a wrong answer",
+			"wrongAnswer2": "This is a wrong answer",
+			"rightAnswer": "This is a right answer"
+		}
+	},
+	{
+		"model": "examAPI.Question",
+		"fields": {
+			"id": 2,
+			"chapter": 1,
+			"difficulty": "easy",
+			"objective": "reminding",
+			"content": " Machine learning is an application of ?",
+			"wrongAnswer1": "This is a wrong answer",
+			"wrongAnswer2": "This is a wrong answer",
+			"rightAnswer": "This is a right answer"
+		}
+	},
+	{
+		"model": "examAPI.Question",
+		"fields": {
+			"id": 3,
+			"chapter": 1,
+			"difficulty": "easy",
+			"objective": "creativity",
+			"content": "Application of Machine learning is ?",
+			"wrongAnswer1": "This is a wrong answer",
+			"wrongAnswer2": "This is a wrong answer",
+			"rightAnswer": "This is a right answer"
+		}
+	},
+	{
+		"model": "examAPI.Question",
+		"fields": {
+			"id": 4,
+			"chapter": 1,
+			"difficulty": "easy",
+			"objective": "understanding",
+			"content": "Machine learning approaches can be traditionally categorized into ______ categories",
+			"wrongAnswer1": "This is a wrong answer",
+			"wrongAnswer2": "This is a wrong answer",
+			"rightAnswer": "This is a right answer"
+		}
+	},
+	{
+		"model": "examAPI.Question",
+		"fields": {
+			"id": 5,
+			"chapter": 1,
+			"difficulty": "easy",
+			"objective": "reminding",
+			"content": "The categories in which Machine learning approaches can be traditionally categorized are",
+			"wrongAnswer1": "This is a wrong answer",
+			"wrongAnswer2": "This is a wrong answer",
+			"rightAnswer": "This is a right answer"
+		}
+	},
+	{
+		"model": "examAPI.Question",
+		"fields": {
+			"id": 6,
+			"chapter": 1,
+			"difficulty": "easy",
+			"objective": "creativity",
+			"content": "_________ is the machine learning algorithms that can be used with labeled data.",
+			"wrongAnswer1": "This is a wrong answer",
+			"wrongAnswer2": "This is a wrong answer",
+			"rightAnswer": "This is a right answer"
+		}
+	},
+	{
+		"model": "examAPI.Question",
+		"fields": {
+			"id": 7,
+			"chapter": 1,
+			"difficulty": "difficult",
+			"objective": "understanding",
+			"content": " __________ is the machine learning algorithms that can be used with unlabeled data",
+			"wrongAnswer1": "This is a wrong answer",
+			"wrongAnswer2": "This is a wrong answer",
+			"rightAnswer": "This is a right answer"
+		}
+	},
+	{
+		"model": "examAPI.Question",
+		"fields": {
+			"id": 8,
+			"chapter": 1,
+			"difficulty": "difficult",
+			"objective": "understanding",
+			"content": "The Real-world machine learning use cases are _______.",
+			"wrongAnswer1": "This is a wrong answer",
+			"wrongAnswer2": "This is a wrong answer",
+			"rightAnswer": "This is a right answer"
+		}
+	},
+	{
+		"model": "examAPI.Question",
+		"fields": {
+			"id": 9,
+			"chapter": 1,
+			"difficulty": "difficult",
+			"objective": "reminding",
+			"content": "Which among the following algorithms are used in Machine learning",
+			"wrongAnswer1": "This is a wrong answer",
+			"wrongAnswer2": "This is a wrong answer",
+			"rightAnswer": "This is a right answer"
+		}
+	},
+	{
+		"model": "examAPI.Question",
+		"fields": {
+			"id": 10,
+			"chapter": 1,
+			"difficulty": "difficult",
+			"objective": "reminding",
+			"content": "__________ are the techniques of keyword normalization",
+			"wrongAnswer1": "This is a wrong answer",
+			"wrongAnswer2": "This is a wrong answer",
+			"rightAnswer": "This is a right answer"
+		}
+	},
+	{
+		"model": "examAPI.Question",
+		"fields": {
+			"id": 11,
+			"chapter": 1,
+			"difficulty": "difficult",
+			"objective": "creativity",
+			"content": "Replace missing values with mean/median/mode helps to handle missing or corrupted data in a dataset. True/False?",
+			"wrongAnswer1": "This is a wrong answer",
+			"wrongAnswer2": "This is a wrong answer",
+			"rightAnswer": "This is a right answer"
+		}
+	},
+	{
+		"model": "examAPI.Question",
+		"fields": {
+			"id": 12,
+			"chapter": 1,
+			"difficulty": "difficult",
+			"objective": "creativity",
+			"content": "________ is a disadvantage of decision trees",
+			"wrongAnswer1": "This is a wrong answer",
+			"wrongAnswer2": "This is a wrong answer",
+			"rightAnswer": "This is a right answer"
+		}
+	}
+]
+  

@@ -1,0 +1,53 @@
+{% extends 'examAPI/layout.html' %} {% load static %} {% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8" style="text-align: center">
+			<h1>All Exams</h1>
+			{% if exams %}
+			<table class="table">
+				<thead class="table-dark">
+					<tr>
+						<th scope="col" class="col-md-2">Index</th>
+						<th scope="col" class="col-md-2">Exam ID</th>
+						<th scope="col" class="col-md-2">Teacher</th>
+						<th scope="col" class="col-md-2">Course</th>
+						<th scope="col" class="col-md-2">Questions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for exam in exams %}
+					<tr>
+						<td>{{forloop.counter}}</td>
+						<td>{{exam.id}}</td>
+						<td>{{exam.course.teacher.credentials.username}}</td>
+						<td>{{exam.course.name}}</td>
+						<td>
+							<button
+								type="button"
+								class="btn btn-outline-primary"
+								onclick="render_exam_instance({{exam.id}})"
+							>
+								View Exam Questions
+							</button>
+						</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% else %}
+			<h1>No Exams Generated Yet</h1>
+			<button
+				type="button"
+				class="btn btn-outline-primary"
+				onclick="location.href=`http://127.0.0.1:8000/new_exam/`;"
+			>
+				Generate Exam
+			</button>
+			{% endif %}
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>
+<script src="{% static 'examAPI/scripts/exam_instance.js' %}"></script>
+{% endblock body %}
