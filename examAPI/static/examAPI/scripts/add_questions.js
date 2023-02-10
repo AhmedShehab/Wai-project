@@ -35,7 +35,7 @@ function getChapters(self) {
 }
 function show_questions() {
 	document.getElementById("questions-container").style.display = "flex";
-	document.getElementById("questions-container").style.flexWrap = "wrap";
+	document.getElementById("questions-container").style.flexWrap = "nowrap";
 	document.getElementById("questions-container").style.justifyContent = "space-evenly";
 }
 function submit_questions(form) {

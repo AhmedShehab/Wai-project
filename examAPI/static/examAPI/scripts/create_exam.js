@@ -51,39 +51,35 @@ function create_input_fields(element) {
 	var chapter_easy_input = document.createElement("input");
 	chapter_easy_input.className = `form-control chapter-easy`;
 	chapter_easy_input.name = "easy-questions";
-	chapter_easy_input.max = "6";
 	chapter_easy_input.placeholder = "No. Easy Questions";
-	// Number of difficult questions
+	// Number of difficult questions input
 	var chapter_difficult_input = document.createElement("input");
 	chapter_difficult_input.className = `form-control chapter-difficult`;
 	chapter_difficult_input.name = "difficult-questions";
-	chapter_difficult_input.max = "6";
 	chapter_difficult_input.placeholder = "No. Difficult Questions";
-	// Number of reminding questions
+	// Number of reminding questions input
 	var chapter_reminding_input = document.createElement("input");
 	chapter_reminding_input.className = `form-control chapter-reminding`;
 	chapter_reminding_input.name = "reminding-questions";
-	chapter_reminding_input = "4";
 	chapter_reminding_input.placeholder = "No. Reminding Questions";
 	// Number of understanding questions
 	var chapter_understanding_input = document.createElement("input");
 	chapter_understanding_input.className = `form-control chapter-understanding`;
 	chapter_understanding_input.name = "understanding-questions";
-	chapter_understanding_input.max = "4";
 	chapter_understanding_input.placeholder = "No. Understanding Questions";
 	// Number of creativity questions
 	var chapter_creativity_input = document.createElement("input");
 	chapter_creativity_input.className = `form-control chapter-creativity`;
 	chapter_creativity_input.name = "creativity-questions";
-	chapter_understanding_input.max = "4";
 	chapter_creativity_input.placeholder = "No. Creativity Questions";
+
 	var chapter_input = [
 		chapter_questions_input,
 		chapter_easy_input,
 		chapter_difficult_input,
 		chapter_reminding_input,
-		chapter_creativity_input,
-		chapter_understanding_input
+		chapter_understanding_input,
+		chapter_creativity_input
 	];
 	return chapter_input;
 }
@@ -102,11 +98,48 @@ function create_label_input_container(element) {
 	return chapter_instance;
 }
 
+function get_exammetadata() {
+	var chapters = document.getElementsByClassName("chapter-div");
+	var metadata = [];
+	Array.from(chapters).forEach(item => {
+		const chapter = item.dataset["id"];
+		const questions = item.querySelector(
+			'[name="chapter-questions"]'
+		).value;
+		const easy = item.querySelector('[name="easy-questions"]').value;
+		const difficult = item.querySelector('[name="difficult-questions"]').value;
+		const reminding = item.querySelector(
+			'[name="reminding-questions"]'
+		).value;
+		const understanding = item.querySelector(
+			'[name="understanding-questions"]'
+		).value;
+		const creativity = item.querySelector(
+			'[name="creativity-questions"]'
+		).value;
+		metadata.push({
+			chapter: chapter,
+			no_of_questions: questions,
+			no_of_easy_questions: easy,
+			no_of_difficult_questions: difficult,
+			no_of_reminding_questions: reminding,
+			no_of_understanding_questions: understanding,
+			no_of_creativity_questions: creativity
+		});
+	});
+	return metadata;
+}
 function generateExam() {
-	var course = document.getElementById("course-options");
-	var selected_course = course.options[course.selectedIndex].value;
+	var course_options = document.getElementById("course-options");
+	var selected_course =
+		course_options.options[course_options.selectedIndex].value;
 	var form = document.getElementById("exam-form");
 	var csrftoken = form.getElementsByTagName("input")[0].value;
+	var metadata = get_exammetadata();
+	post_exam(metadata, selected_course, csrftoken);
+	
+}
+function post_exam(metadata, course, csrftoken) {
 	fetch(`/exam/`, {
 		method: "POST",
 		headers: {
@@ -114,54 +147,12 @@ function generateExam() {
 			"X-CSRFToken": csrftoken
 		},
 		body: JSON.stringify({
-			course: selected_course
-		})
-	})
-		.then(response => response.json())
-		.then(data => {
-			var exam = data["id"];
-			get_exammetadata(exam, csrftoken);
-		});
-
-	function get_exammetadata(exam, csrftoken) {
-		var chapters = document.getElementsByClassName("chapter-div");
-		var metadata = [];
-		Array.from(chapters).forEach(item => {
-			const chapter = item.dataset["id"];
-			const questions = item.querySelector('[name="chapter-questions"]').value;
-			const easy = item.querySelector('[name="easy-questions"]').value;
-			const difficult = item.querySelector('[name="difficult-questions"]').value;
-			const reminding = item.querySelector('[name="reminding-questions"]').value;
-			const understanding = item.querySelector('[name="understanding-questions"]').value;
-			const creativity = item.querySelector('[name="creativity-questions"]').value;
-			metadata.push({
-				chapter: chapter,
-				no_of_questions: questions,
-				no_of_easy_questions: easy,
-				no_of_difficult_questions: difficult,
-				no_of_reminding_questions: reminding,
-				no_of_understanding_questions: understanding,
-				no_of_creativity_questions: creativity
-			});
-		});
-		post_exam_metadata(metadata, csrftoken, exam);
-	}
-}
-function post_exam_metadata(metadata, csrftoken, exam) {
-	fetch(`/exam_metadata/`, {
-		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-			"X-CSRFToken": csrftoken
-		},
-		body: JSON.stringify({
-			exam: exam,
+			course: course,
 			metadata: metadata
 		})
 	})
 		.then(response => response.json())
 		.then(data => {
-			location.href = `http://127.0.0.1:8000/exam_instance/${data['exam']}/`
-			console.log(data);
+			location.href=`http://127.0.0.1:8000/exam_instance/${data['id']}`;
 		});
 }

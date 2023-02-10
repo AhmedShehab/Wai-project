@@ -26,8 +26,3 @@ class ExamSerializer(serial.ModelSerializer):
     class Meta:
         model = Exam
         fields= "__all__"
-
-class ExamMetadataSerializer(serial.ModelSerializer):
-    class Meta:
-        model = ExamMetadata
-        fields= '__all__'

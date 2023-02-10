@@ -52,19 +52,10 @@ class Question(models.Model):
     def __str__(self):
         return f'Chapter: {self.chapter} content: {self.content}'
 
-class ExamMetadata(models.Model):
-    exam = models.ForeignKey("Exam",on_delete=models.CASCADE,related_name="metadata")
-    chapter  = models.ForeignKey("Chapter", on_delete=models.CASCADE)
-    no_of_questions = models.PositiveIntegerField()
-    no_of_easy_questions= models.PositiveIntegerField()
-    no_of_difficult_questions= models.PositiveIntegerField()
-    no_of_reminding_questions= models.PositiveIntegerField()
-    no_of_understanding_questions= models.PositiveIntegerField()
-    no_of_creativity_questions= models.PositiveIntegerField()
-
 class Exam(models.Model):
     course = models.ForeignKey("Course", on_delete=models.CASCADE,related_name='exams')
     questions = models.ManyToManyField("Question",blank=True)
+    accuracy = models.FloatField(default=100.00)
     def __str__(self):
         return self.course.name
 

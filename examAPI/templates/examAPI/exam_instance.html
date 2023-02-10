@@ -1,7 +1,10 @@
 {% extends 'examAPI/layout.html' %} {% block body %}
 <div class="row">
-	<div class="col-md-4"></div>
-	<div class="col-md-4">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<h1 style="text-align: center;">{{exam.course}} course exam</h1>
+		<h5 style="text-align: center;">Generated exam accuracy: {{exam.accuracy}}%</h1>
+		<h1>Questions</h1>
 		<ul class="list-group">
 			{% for question in exam.questions.all %}
 			<li class="list-group-item">
@@ -17,6 +20,6 @@
 			{% endfor %}
 		</ul>
 	</div>
-	<div class="col-md-4"></div>
+	<div class="col-md-2"></div>
 	{% endblock body %}
 </div>
